@@ -1,0 +1,2 @@
+*.mp4 filter=lfs -crlf
+*.pdf filter=lfs -crlf
