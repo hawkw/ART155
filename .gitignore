@@ -36,7 +36,7 @@
 *.vrb
 *.xdy
 *.tdo
-
+*-blx.bib
 
 ### Processing ###
 .DS_Store
