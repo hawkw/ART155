@@ -32,7 +32,7 @@ void draw() {
   noStroke();
   
   light_intensity = (frameCount % 60 < 5) ?
-    255 : light_intensity - 10;
+    255 : light_intensity - 5;
                    
   fill(light_intensity,0,0);
   pointLight( light_intensity, 10, 10
@@ -45,12 +45,20 @@ void draw() {
 
     draw_moon(radians(orbital_period));
   popMatrix();
-
+  
+  //pointLight( 255, 255, 255
+  //          , (MOON_DIST - 50) * 2 * -cos(radians(orbital_period))
+  //          , (MOON_DIST - 50) * 2 * sin(radians(orbital_period))
+  //          , (MOON_DIST - 50) * 2 * sin(radians(orbital_period))
+  //          );
+            
   pushMatrix();
     translate(width/2, height/2, 0);
+
     translate( MOON_DIST * 2 * -cos(radians(orbital_period))
              , MOON_DIST * 2 * sin(radians(orbital_period))
-             , MOON_DIST * 2 * sin(radians(orbital_period)));
+             , MOON_DIST * 2 * sin(radians(orbital_period))
+             );
     sphere(50);
     pushMatrix();
       translate( 80 * cos(radians(frameCount))
@@ -65,6 +73,13 @@ void draw() {
       rotate(180);
       halite_molecule();
     popMatrix();
+    //pushMatrix();
+    //  translate( 80 * cos(radians(frameCount))
+    //           , 80 * -sin(radians(frameCount))
+    //           , 0);
+    //  rotate(180);
+    //  halite_molecule();
+    //popMatrix();
   popMatrix();
   
   noFill();
@@ -87,6 +102,11 @@ void draw() {
 }
 
 void draw_moon(float theta) {
+  //pointLight( 255, 255, 255
+  //          , (MOON_DIST - 50) * cos(theta)
+  //          , 50 * sin(theta)
+  //          , (MOON_DIST - 50) *sin(theta)
+  //          );
   pushMatrix();
     translate( MOON_DIST * cos(theta)
              , 50 * sin(theta)
