@@ -27,15 +27,25 @@ void setup() {
 }
 
 void draw() {
+  colorMode(HSB, 360, 100, 100);
+  color rainbow 
+    = color( map( millis() % 6000 // map every 6000 milliseconds
+                 , 0, 6000 // from the range 0 - 6000
+                 , 0, 360  // to the range 0-360
+                 )
+            , 100 // 100% saturation
+            , map( frameCount % 60 // fade out from the hearbeat
+                 , 0, 60
+                 , 100, 0
+                 )
+            );
+  colorMode(RGB);
+  
   background(0);
   lights();
   noStroke();
-  
-  light_intensity = (frameCount % 60 < 5) ?
-    255 : light_intensity - 5;
-                   
-  fill(light_intensity,0,0);
-  pointLight( light_intensity, 10, 10
+  fill( red(rainbow), green(rainbow), blue(rainbow));
+  pointLight( red(rainbow), green(rainbow), blue(rainbow)
             , width/2, height/2, 0
             );
   
