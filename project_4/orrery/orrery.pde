@@ -23,14 +23,14 @@ final color CHLORINE_COLOR = color(0,255,0);
 final color SODIUM_COLOR   = color(0,0,255);
 
 void setup() {
-  size(840, 680, P3D);
+  size(1000, 800, P3D);
 }
 
 void draw() {
   colorMode(HSB, 360, 100, 100);
   color rainbow 
-    = color( map( millis() % 6000 // map every 6000 milliseconds
-                 , 0, 6000 // from the range 0 - 6000
+    = color( map( (frameCount / 60) % 6000
+                 , 0, 6000 // from the range 0 - 60
                  , 0, 360  // to the range 0-360
                  )
             , 100 // 100% saturation
@@ -42,6 +42,29 @@ void draw() {
   colorMode(RGB);
   
   background(0);
+  
+  pushMatrix();
+    strokeWeight(15);
+    stroke(255);
+    triangle( width/2
+            , 25
+            , width/6      + 20
+            , 3*(height/4) 
+            , 5*(width/6)  - 20
+            , 3*(height/4)
+            );
+    
+    translate(width/2,height/2);
+
+    noFill();
+    ellipse( 0, 0
+           , width - (width/4)
+           , width - (width/4) );
+  
+    strokeWeight(1);
+    noStroke();
+  popMatrix();
+  
   lights();
   noStroke();
   fill( red(rainbow), green(rainbow), blue(rainbow));
@@ -51,8 +74,9 @@ void draw() {
   
   pushMatrix();
     translate(width/2, height/2, 0);
-    sphere(sphere_size);
 
+    sphere(sphere_size);
+    
     draw_moon(radians(orbital_period));
   popMatrix();
   
