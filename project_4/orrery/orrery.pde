@@ -124,7 +124,7 @@ void draw() {
     rotateX(map(millis(), 0, 60000, 0, TWO_PI));
     rotateY(map(minute() + norm(second(), 0, 60), 0, 60, 0, TWO_PI));
     rotateZ(map(hour() + norm(minute(), 0, 60), 0, 24, 0, TWO_PI * 2));
-    sphere(220);
+    sphere(200 + hour() + norm(minute(), 0, 60));
   popMatrix();
   
   
@@ -143,7 +143,7 @@ void draw_moon(float theta) {
   //          );
   pushMatrix();
     translate( MOON_DIST * cos(theta)
-             , 50 * sin(theta)
+             , hour() * 2 * sin(theta)
              , MOON_DIST*sin(theta));
     fill(255);
     sphere(30);
