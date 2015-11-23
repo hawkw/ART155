@@ -47,9 +47,22 @@ void setup() {
     pinMode(LED_G, OUTPUT);
     pinMode(LED_B, OUTPUT);
 
+    // this should no-op if serial isn't there???
+    Serial.begin(38400);
+
+    // initialize device
+    Serial.println("Initializing I2C devices...");
+    accelgyro.initialize();
+
+    // verify connection
+    Serial.println("Testing device connections...");
+    Serial.println(accelgyro.testConnection() ?
+        "MPU6050 connection successful" : "MPU6050 connection failed");
+
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+    // read raw accel/gyro measurements from device
+    accelgyro.getMotion6(&ax, &ay, &az, &gx, &gy, &gz);
 
 }
