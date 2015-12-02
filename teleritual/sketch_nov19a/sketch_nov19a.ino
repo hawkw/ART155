@@ -64,5 +64,6 @@ void setup() {
 void loop() {
     // read raw accel/gyro measurements from device
     accelgyro.getMotion6(&ax, &ay, &az, &gx, &gy, &gz);
+    r = 255 - map()
 
 }
