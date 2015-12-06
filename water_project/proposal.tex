@@ -1,4 +1,4 @@
-\documentclass[a4paper,12pt]{article}
+\documentclass[a4paper,nobib]{tufte-handout}
 \usepackage{url}
 \usepackage{setspace}
 
@@ -8,15 +8,39 @@
 \usepackage{hyperref}
 \usepackage{cleveref}
 
-\usepackage[ backend=bibtex
-           , sortcites=true
-           , sorting=nty
+\usepackage{graphicx} % allow embedded images
+  \setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio}
+  \graphicspath{{../imgs/}} % set of paths to search for images
+\usepackage{amsmath}  % extended mathematics
+\usepackage{booktabs} % book-quality tables
+\usepackage{units}    % non-stacked fractions and better unit spacing
+\usepackage{multicol} % multiple column layout facilities
+% \usepackage{biblatex}
+% \usepackage[ backend=bibtex
+%            , sortcites=true
+%            , sorting=nty
+%            , backref
+%            , natbib
+%            , hyperref
+%            ]{biblatex-chicago}
+\usepackage[ autocite  = footnote
+           , backend   = bibtex
+           , sortcites = true
+           , sorting   = nty
            , backref
            , natbib
            , hyperref
            ]{biblatex-chicago}
+%
+% \usepackage[ backend=bibtex
+%            , sortcites=true
+%            , sorting=nty
+%            , backref
+%            , natbib
+%            , hyperref
+%            ]{biblatex-chicago}
 \bibliography{proposal.bib}
-\title{ART155: Water Project Proposal}
+\title{\textbf{ART155 Project Proposal:} Water of Life}
 \author{Eliza Weisman}
 \begin{document}
 \maketitle
